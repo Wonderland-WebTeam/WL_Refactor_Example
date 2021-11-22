@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Refactor_Example.After.PriceCalculator
+namespace Refactor_Example.After.PriceCalculator.Context
 {
     public class OnSalePriceCategoryCalculator : IPriceCategoryCalculator
     {
