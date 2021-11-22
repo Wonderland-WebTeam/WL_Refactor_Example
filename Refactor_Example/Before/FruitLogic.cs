@@ -1,25 +1,17 @@
 ﻿using Refactor_Example.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Refactor_Example.Before
 {
     public class FruitLogic
     {
-        private readonly IEnumerable<Fruit> _fruits;
-
-        public FruitLogic(IEnumerable<Fruit> fruits)
-        {
-            _fruits = fruits;
-        }
-
-        public decimal GetTotalPrice(DeliveryOptions deliveryOptions)
+        public decimal GetTotalPrice(IEnumerable<Fruit> fruits, DeliveryOptions deliveryOptions)
         {
             decimal total = 0;
 
             // 總價
-            foreach (var fruit in _fruits)
+            foreach (var fruit in fruits)
             {
                 total += fruit.PriceCategory switch
                 {
@@ -41,13 +33,6 @@ namespace Refactor_Example.Before
             }
 
             return total;
-        }
-
-        public decimal GetOnSaleTotalPrice()
-        {
-            return _fruits
-                .Where(f => f.PriceCategory == PriceCategory.OnSale)
-                .Sum(f => f.Price);
         }
     }
 }

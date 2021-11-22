@@ -13,18 +13,18 @@ namespace Refactor_Example
         {
             var fruits = FruitRepository.GetAll().ToList();
 
-            var fruitLogicForBefore = new FruitLogic(fruits);
+            var fruitLogicForBefore = new FruitLogic();
             const DeliveryOptions deliveryOptions = DeliveryOptions.EMS;
 
             // Before
-            var totalOfBefore = fruitLogicForBefore.GetTotalPrice(deliveryOptions);
+            var totalOfBefore = fruitLogicForBefore.GetTotalPrice(fruits, deliveryOptions);
 
             // After
             var shoppingService = new ShoppingService();
             var totalOfAfter = shoppingService.GetTotalPrice(fruits, deliveryOptions);
 
-            Console.WriteLine(totalOfBefore);
-            Console.WriteLine(totalOfAfter);
+            Console.WriteLine($"Before:{totalOfBefore}");
+            Console.WriteLine($"After:{totalOfAfter}");
             Console.Read();
         }
     }
