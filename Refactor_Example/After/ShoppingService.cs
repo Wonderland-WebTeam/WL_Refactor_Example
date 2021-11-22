@@ -11,6 +11,7 @@ namespace Refactor_Example.After
     {
         public decimal GetTotalPrice(IEnumerable<Fruit> fruits, DeliveryOptions deliveryOptions)
         {
+            // 避免延遲執行(Deferred Execution)
             fruits = fruits.ToList();
 
             var calculatorContext = new FruitCalculator(new GeneralPriceCategoryCalculator());
