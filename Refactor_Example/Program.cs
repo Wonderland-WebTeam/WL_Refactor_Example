@@ -23,6 +23,7 @@ namespace Refactor_Example
             var shoppingService = new ShoppingService();
             var totalOfAfter = shoppingService.GetTotalPrice(fruits, deliveryOptions);
 
+            // output $58
             Console.WriteLine($"Before:{totalOfBefore}");
             Console.WriteLine($"After:{totalOfAfter}");
             Console.Read();
