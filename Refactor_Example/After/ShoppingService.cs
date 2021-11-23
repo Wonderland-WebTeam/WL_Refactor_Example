@@ -21,9 +21,9 @@ namespace Refactor_Example.After
             calculatorContext.SetCalculator(new OnSalePriceCategoryCalculator());
             var onSaleCategoryTotalPrice = calculatorContext.Calculate(fruits);
 
-            var deliveryFeeCalculator = new DeliveryFeeCalculator();
-
             var totalPrice = generalCategoryTotalPrice + onSaleCategoryTotalPrice;
+
+            var deliveryFeeCalculator = new DeliveryFeeCalculator();
             var deliveryFee = deliveryFeeCalculator.CalculateFee(deliveryOptions);
 
             return totalPrice + deliveryFee;
