@@ -12,11 +12,10 @@ namespace Refactor_Example
         private static void Main()
         {
             var fruits = FruitRepository.GetAll().ToList();
-
-            var fruitLogicForBefore = new FruitLogic();
             const DeliveryOptions deliveryOptions = DeliveryOptions.EMS;
 
             // Before
+            var fruitLogicForBefore = new FruitLogic();
             var totalOfBefore = fruitLogicForBefore.GetTotalPrice(fruits, deliveryOptions);
 
             // After
