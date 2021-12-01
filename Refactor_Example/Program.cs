@@ -11,7 +11,9 @@ namespace Refactor_Example
     {
         private static void Main()
         {
-            var fruits = FruitRepository.GetAll().ToList();
+            IFruitRepository fruitRepository = new FruitRepository();
+            var fruits = fruitRepository.GetAll().ToList();
+
             const DeliveryOptions deliveryOptions = DeliveryOptions.EMS;
 
             // Before

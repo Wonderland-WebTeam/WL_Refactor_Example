@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Refactor_Example.Database
 {
-    public static class FruitRepository
+    public class FruitRepository : IFruitRepository
     {
-        public static IEnumerable<Fruit> GetAll()
+        public IEnumerable<Fruit> GetAll()
         {
             yield return
                 new Fruit
