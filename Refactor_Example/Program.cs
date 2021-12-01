@@ -3,7 +3,6 @@ using Refactor_Example.Before;
 using Refactor_Example.Database;
 using Refactor_Example.Entities;
 using System;
-using System.Linq;
 
 namespace Refactor_Example
 {
@@ -11,18 +10,15 @@ namespace Refactor_Example
     {
         private static void Main()
         {
-            IFruitRepository fruitRepository = new FruitRepository();
-            var fruits = fruitRepository.GetAll().ToList();
-
             const DeliveryOptions deliveryOptions = DeliveryOptions.EMS;
 
             // Before
-            var fruitLogicForBefore = new FruitLogic();
-            var totalOfBefore = fruitLogicForBefore.GetTotalPrice(fruits, deliveryOptions);
+            var fruitLogicForBefore = new FruitLogic(new FruitRepository());
+            var totalOfBefore = fruitLogicForBefore.GetTotalPrice(deliveryOptions);
 
             // After
-            var shoppingService = new ShoppingService();
-            var totalOfAfter = shoppingService.GetTotalPrice(fruits, deliveryOptions);
+            var shoppingService = new ShoppingService(new FruitRepository());
+            var totalOfAfter = shoppingService.GetTotalPrice(deliveryOptions);
 
             // output $58
             Console.WriteLine($"Before:{totalOfBefore}");

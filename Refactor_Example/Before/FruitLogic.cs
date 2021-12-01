@@ -1,14 +1,22 @@
-﻿using Refactor_Example.Entities;
+﻿using Refactor_Example.Database;
+using Refactor_Example.Entities;
 using System;
-using System.Collections.Generic;
 
 namespace Refactor_Example.Before
 {
     public class FruitLogic
     {
-        public decimal GetTotalPrice(IEnumerable<Fruit> fruits, DeliveryOptions deliveryOptions)
+        private readonly IFruitRepository _fruitRepository;
+
+        public FruitLogic(IFruitRepository fruitRepository)
+        {
+            _fruitRepository = fruitRepository;
+        }
+
+        public decimal GetTotalPrice(DeliveryOptions deliveryOptions)
         {
             decimal total = 0;
+            var fruits = _fruitRepository.GetAll();
 
             // 總價
             foreach (var fruit in fruits)
